@@ -1,4 +1,3 @@
-import React from "react";
 import { useButtonUIStyle } from "./style";
 
 const ButtonUI = () => {
