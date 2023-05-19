@@ -1,41 +1,35 @@
 import InputUI from "../../../UI/InputUI/InputUI";
 import ButtonUI from "../../../UI/buttonUI/ButtonUI";
-import { IUserRegistration } from "../../../store/services/type";
-import { userApi } from "../../../store/services/user";
+import Loader from "../../../UI/loaderUI/Loader";
 import { useRegistrationFormStyle } from "./style";
+import useRegistrationForm from "./useRegistrationForm";
 
 const RegistrationForm = () => {
   const { RegistrationFormSC } = useRegistrationFormStyle();
-  const [registerUser] = userApi.useRegisterUserMutation();
-
-  const handleRegister = async (data: any) => {
-    await registerUser(data);
-  };
-
-  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    // отменяем поведение формы установленное по умолчанию
-    e.preventDefault();
-    // Создаём новый объект FormData
-    const formData = new FormData(e.currentTarget);
-    // Проверка на сходство паролей
-    // if (formData.get("password") !== formData.get("repeatPassword")) return;
-    // Если пароли сходятся отправляем данные на сервер
-    const data = Object.fromEntries(formData);
-    // console.log(data);
-    handleRegister(data);
-  };
+  const { isLoading, onSubmit, errorPassword } = useRegistrationForm();
   return (
-    <RegistrationFormSC
-      method="post"
-      action="/api/subscribe/"
-      onSubmit={onSubmit}
-    >
-      <InputUI label="Email" type="email" name="email" />
-      <InputUI label="Login" name="name" />
-      <InputUI label="Password" type="password" name="password" />
-      {/* <InputUI label="Repeat password" type="password" name="repeatPassword" /> */}
-      <ButtonUI />
-    </RegistrationFormSC>
+    <>
+      {isLoading ? (
+        <Loader />
+      ) : (
+        <RegistrationFormSC
+          method="post"
+          action="/api/subscribe/"
+          onSubmit={onSubmit}
+        >
+          <InputUI label="Email" type="email" name="email" />
+          <InputUI label="Login" name="name" />
+          <InputUI label="Password" type="password" name="password" />
+          <h5></h5>
+          <InputUI
+            label={errorPassword}
+            type="password"
+            name="repeatPassword"
+          />
+          <ButtonUI />
+        </RegistrationFormSC>
+      )}
+    </>
   );
 };
 

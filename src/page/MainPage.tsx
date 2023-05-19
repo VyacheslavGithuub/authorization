@@ -1,12 +1,17 @@
-import { useSelector } from "react-redux";
 import LoginPage from "./loginPage/LoginPage";
-import { RootState } from "../store/store";
 import HomePage from "./homePage/HomePage";
+import { Navigate, Route, Routes } from "react-router-dom";
 
 function MainPage() {
-  const isAuth = useSelector((state: RootState) => state.auth.isAuth);
-
-  return <>{isAuth ? <HomePage /> : <LoginPage />}</>;
+  return (
+    <>
+      <Routes>
+        <Route path="/" element={<LoginPage />} />
+        <Route path="home" element={<HomePage />} />
+        <Route path="*" element={<Navigate to="/" replace />} />
+      </Routes>
+    </>
+  );
 }
 
 export default MainPage;

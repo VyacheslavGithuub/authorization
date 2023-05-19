@@ -1,6 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
 import authSlice from "./slice/authSlice";
-import { userApi } from "./services/user";
+import { userApi } from "./services/userServices";
 
 export const store = configureStore({
   reducer: {
@@ -11,7 +11,5 @@ export const store = configureStore({
     getDefaultMiddleware().concat(userApi.middleware),
 });
 
-// Infer the `RootState` and `AppDispatch` types from the store itself
 export type RootState = ReturnType<typeof store.getState>;
-// Inferred type: {posts: PostsState, comments: CommentsState, users: UsersState}
 export type AppDispatch = typeof store.dispatch;

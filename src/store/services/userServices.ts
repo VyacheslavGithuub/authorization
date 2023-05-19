@@ -1,5 +1,8 @@
-import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import { baseQuery } from "./baseQuery";
+import { createApi } from "@reduxjs/toolkit/query/react";
 import {
+  IExitUser,
+  IExitUserResponse,
   IUserLogin,
   IUserLoginResponse,
   IUserRegistration,
@@ -8,7 +11,8 @@ import {
 
 export const userApi = createApi({
   reducerPath: "userApi",
-  baseQuery: fetchBaseQuery({ baseUrl: import.meta.env.VITE_SOME_BASE_URL }),
+  baseQuery,
+  tagTypes: ["auth"],
   endpoints: (build) => ({
     registerUser: build.mutation<IUserRegistrationResponse, IUserRegistration>({
       query: (data) => ({
@@ -24,8 +28,18 @@ export const userApi = createApi({
         body: data,
       }),
     }),
+    exitUser: build.mutation<IExitUserResponse, any>({
+      query: (data) => ({
+        url: "logout ",
+        method: "POST",
+        body: data,
+      }),
+    }),
   }),
 });
 
-export const { useRegisterUserMutation } = userApi;
-export const { useLoginUserMutation } = userApi;
+export const {
+  useRegisterUserMutation,
+  useLoginUserMutation,
+  useExitUserMutation,
+} = userApi;

@@ -11,15 +11,15 @@ const InputUISC = styled.input`
   width: 100%;
   outline: none;
   background-color: #fffff7;
-  opacity: 0.3;
   border: none;
   font-size: 18px;
   padding: 10px;
   border-radius: 10px;
   color: black;
   margin-top: 3px;
+  opacity: 0.8;
   &:focus {
-    opacity: 0.6;
+    opacity: 0.9;
   }
 `;
 
