@@ -1,13 +1,15 @@
 import { Navigate } from "react-router-dom";
-import useHomePage from "./useHomePage";
+import Exit from "./exit/Exit";
+import Files from "./files/Files";
 
 const HomePage = () => {
-  const { onSubmit, token } = useHomePage();
+  const token = sessionStorage.getItem("test");
   return (
     <>
       {/* Если не авторизованный пользователь зайдёт на страницу home то его перенаправит на страницу входа */}
       {token === null && <Navigate replace to="/" />}
-      <button onClick={onSubmit}>Выход</button>
+      <Exit />
+      <Files />
     </>
   );
 };

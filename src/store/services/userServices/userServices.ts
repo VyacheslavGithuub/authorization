@@ -1,7 +1,6 @@
-import { baseQuery } from "./baseQuery";
+import { baseQuery } from "../baseQuery";
 import { createApi } from "@reduxjs/toolkit/query/react";
 import {
-  IExitUser,
   IExitUserResponse,
   IUserLogin,
   IUserLoginResponse,

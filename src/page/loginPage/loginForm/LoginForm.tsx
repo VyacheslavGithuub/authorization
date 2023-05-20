@@ -13,7 +13,7 @@ const LoginForm = () => {
       {isLoading ? (
         <Loader />
       ) : (
-        <LoginFormSC action="" method="" onSubmit={onSubmit}>
+        <LoginFormSC onSubmit={onSubmit}>
           <InputUI label="Email" type="email" name="email" />
           <InputUI label="Password" type="password" name="password" />
           <ButtonUI />

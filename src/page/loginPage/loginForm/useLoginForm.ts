@@ -1,12 +1,8 @@
-import { useDispatch } from "react-redux";
-import { userApi } from "../../../store/services/userServices";
+import { userApi } from "../../../store/services/userServices/userServices";
 import getFormValues from "../../../utils/getFormValues";
 import { useNavigate } from "react-router-dom";
-import { addToken } from "../../../store/slice/authSlice";
 
 const useLoginForm = () => {
-  // достаём стили
-  const dispatch = useDispatch();
   // loginUser запрос для авторизации
   const [loginUser, { data, error, isLoading }] =
     userApi.useLoginUserMutation();
@@ -20,11 +16,11 @@ const useLoginForm = () => {
     await loginUser(formData);
   };
   // Обрабатываем сценарий ошибки полученной во время запроса
-  error && console.log(error);
+  error && console.log("неправильный email или пароль");
   // Если запрос прошёл успешно добавляем токен в стейт и перенаправляем на home page
   const navigate = useNavigate();
   if (data?.status === "ok") {
-    dispatch(addToken(data.token));
+    sessionStorage.setItem("test", data.token);
     navigate("home");
   }
   return {

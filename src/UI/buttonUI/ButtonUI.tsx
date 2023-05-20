@@ -1,8 +1,16 @@
 import { useButtonUIStyle } from "./style";
 
-const ButtonUI = () => {
+interface IButtonUI {
+  value: string;
+  onClick?: () => void;
+}
+const ButtonUI = ({ value, onClick }: IButtonUI) => {
   const { ButtonUISC } = useButtonUIStyle();
-  return <ButtonUISC type="submit">SEND</ButtonUISC>;
+  return (
+    <ButtonUISC type="submit" onClick={onClick}>
+      {(value = value ? value : "Кнопка")}
+    </ButtonUISC>
+  );
 };
 
 export default ButtonUI;

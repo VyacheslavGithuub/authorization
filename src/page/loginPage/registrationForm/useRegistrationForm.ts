@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { userApi } from "../../../store/services/userServices";
+import { userApi } from "../../../store/services/userServices/userServices";
 import getFormValues from "../../../utils/getFormValues";
 
 const useRegistrationForm = () => {

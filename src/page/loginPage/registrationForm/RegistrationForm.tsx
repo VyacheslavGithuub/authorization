@@ -12,11 +12,7 @@ const RegistrationForm = () => {
       {isLoading ? (
         <Loader />
       ) : (
-        <RegistrationFormSC
-          method="post"
-          action="/api/subscribe/"
-          onSubmit={onSubmit}
-        >
+        <RegistrationFormSC onSubmit={onSubmit}>
           <InputUI label="Email" type="email" name="email" />
           <InputUI label="Login" name="name" />
           <InputUI label="Password" type="password" name="password" />
