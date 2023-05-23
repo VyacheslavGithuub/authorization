@@ -1,23 +1,13 @@
 import styled from "styled-components";
 
-const ButtonUISC = styled.button`
-  width: 50%;
-  background-color: #588686;
-  border: none;
-  color: white;
-  font-size: 16px;
-  border-radius: 10px;
+const ButtonUISC = styled.button<{ bgColor?: string }>`
+  background-color: ${({ bgColor }) => (bgColor ? bgColor : "#BF4F74")};
+  border: 2px solid;
   padding: 10px;
-  letter-spacing: 1px;
-  margin-top: 20px;
+  border-radius: 10px;
   cursor: pointer;
-  position: relative;
-  top: 0px;
-  left: 25%;
-
-  &:active {
-    background-color: #74a4a4;
-  }
+  font-weight: bold;
+  font-size: 14px;
 `;
 
 export const useButtonUIStyle = () => ({

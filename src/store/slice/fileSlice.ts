@@ -5,7 +5,6 @@ interface fileState {
   files: any;
 }
 
-// Define the initial state using that type
 const initialState: fileState = {
   files: null,
 };
@@ -14,7 +13,7 @@ export const fileSlice = createSlice({
   name: "file",
   initialState,
   reducers: {
-    setFilesAction: (state, action: PayloadAction<any>) => {
+    setFilesAction: (state, action) => {
       state.files = action.payload;
     },
     deleteFileAction: (state, action: PayloadAction<number>) => {

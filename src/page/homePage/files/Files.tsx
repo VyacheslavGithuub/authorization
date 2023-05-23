@@ -1,17 +1,11 @@
-import { useEffect } from "react";
-import { fileApi } from "../../../store/services/fileServices/fileServices";
 import AddFile from "./addFile/addFile";
+import UploadedFiles from "./uploadedFiles/UploadedFiles";
 
 const Files = () => {
-  const { data, refetch } = fileApi.useGettingFilesQuery("");
-
-  useEffect(() => {
-    console.log(data);
-  }, [data]);
-
   return (
     <>
       <AddFile />
+      <UploadedFiles />
     </>
   );
 };

@@ -10,7 +10,9 @@ export const store = configureStore({
     [fileApi.reducerPath]: fileApi.reducer,
   },
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(userApi.middleware, fileApi.middleware),
+    getDefaultMiddleware({
+      serializableCheck: false,
+    }).concat(userApi.middleware, fileApi.middleware),
 });
 
 export type RootState = ReturnType<typeof store.getState>;

@@ -1,6 +1,7 @@
 import { userApi } from "../../../store/services/userServices/userServices";
-import getFormValues from "../../../utils/getFormValues";
+import getFormValues from "../../../module/getFormValues";
 import { useNavigate } from "react-router-dom";
+import { token } from "../../../module/token";
 
 const useLoginForm = () => {
   // loginUser запрос для авторизации
@@ -20,7 +21,7 @@ const useLoginForm = () => {
   // Если запрос прошёл успешно добавляем токен в стейт и перенаправляем на home page
   const navigate = useNavigate();
   if (data?.status === "ok") {
-    sessionStorage.setItem("test", data.token);
+    token(data.token);
     navigate("home");
   }
   return {

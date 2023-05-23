@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { userApi } from "../../../store/services/userServices/userServices";
-import getFormValues from "../../../utils/getFormValues";
+import getFormValues from "../../../module/getFormValues";
 
 const useRegistrationForm = () => {
   const [errorPassword, setErrorPassword] = useState("Repeat password");
@@ -22,6 +22,7 @@ const useRegistrationForm = () => {
       delete formData.repeatPassword;
       // и отправляем запрос на регистрацию
       await registerUser(formData);
+      alert("Теперь вы зарегистрированны, перейдите на вкладку Login");
     }
   };
 

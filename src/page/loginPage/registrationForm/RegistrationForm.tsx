@@ -5,7 +5,8 @@ import { useRegistrationFormStyle } from "./style";
 import useRegistrationForm from "./useRegistrationForm";
 
 const RegistrationForm = () => {
-  const { RegistrationFormSC } = useRegistrationFormStyle();
+  const { RegistrationFormSC, RegistrationFormButtonSC } =
+    useRegistrationFormStyle();
   const { isLoading, onSubmit, errorPassword } = useRegistrationForm();
   return (
     <>
@@ -22,7 +23,9 @@ const RegistrationForm = () => {
             type="password"
             name="repeatPassword"
           />
-          <ButtonUI />
+          <RegistrationFormButtonSC>
+            <ButtonUI value="Отправить" />
+          </RegistrationFormButtonSC>
         </RegistrationFormSC>
       )}
     </>

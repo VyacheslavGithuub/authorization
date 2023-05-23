@@ -5,7 +5,17 @@ const LoginFormSC = styled.form`
   flex-direction: column;
   justify-content: center;
 `;
+const LoginFormButtonSC = styled.div`
+  width: 100%;
+  text-align: center;
+  margin-top: 25px;
+
+  button {
+    width: 150px;
+  }
+`;
 
 export const useLoginFormSCStyle = () => ({
   LoginFormSC,
+  LoginFormButtonSC,
 });

@@ -2,11 +2,16 @@ import styled from "styled-components";
 
 const FileWrapSC = styled.div`
   position: relative;
+
   &:hover {
     div {
       opacity: 1;
     }
   }
+`;
+const FileSC = styled.img`
+  width: 186px;
+  height: 120px;
 `;
 const FileBinSC = styled.div`
   width: 20px;
@@ -22,17 +27,12 @@ const FileBinSC = styled.div`
   justify-content: center;
   cursor: pointer;
   opacity: 0;
-  transition: opacity 0.25s;
-`;
-const FileSC = styled.img`
-  width: 200px;
-  height: 120px;
-  /* border-radius: 10px; */
-  /* margin-bottom: 10px; */
+  transition: all 0.2s ease-out;
 `;
 const FileDescriptionSC = styled.div`
+  opacity: 0;
   position: absolute;
-  bottom: 0px;
+  bottom: 4px;
   right: 0px;
   left: 0px;
   height: 25px;
@@ -42,12 +42,20 @@ const FileDescriptionSC = styled.div`
   align-items: center;
   justify-content: space-between;
   padding: 0 5px;
-  transition: bottom 0.25s;
+  transition: all 0.2s ease-out;
 `;
-
+const FileNameSC = styled.span`
+  width: 100%;
+  max-width: 100px;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+`;
 export const useFileStyle = () => ({
   FileDescriptionSC,
   FileWrapSC,
+  FileNameSC,
   FileBinSC,
   FileSC,
 });

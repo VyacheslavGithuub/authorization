@@ -9,6 +9,7 @@ export const fileApi = createApi({
   endpoints: (build) => ({
     gettingFiles: build.query<IGettingFiles, string>({
       query: () => `media`,
+      providesTags: (result) => ["File"],
     }),
     addFileApi: build.mutation<any, any>({
       query: (data) => ({
@@ -18,8 +19,35 @@ export const fileApi = createApi({
         contentType: false,
         processData: false,
       }),
+      invalidatesTags: ["File"],
+    }),
+    gettingFile: build.query<any, string>({
+      query: (id) => ({
+        url: `media/${id}`,
+        method: "GET",
+
+        responseHandler: async (response) =>
+          window.location.assign(
+            window.URL.createObjectURL(await response.blob())
+          ),
+        cache: "no-cache",
+      }),
+      providesTags: (result) => ["File"],
+    }),
+
+    deleteFile: build.mutation<any, string>({
+      query: (id) => ({
+        url: `media/${id}`,
+        method: "DELETE",
+      }),
+      invalidatesTags: ["File"],
     }),
   }),
 });
 
-export const { useGettingFilesQuery, useAddFileApiMutation } = fileApi;
+export const {
+  useGettingFilesQuery,
+  useGettingFileQuery,
+  useAddFileApiMutation,
+  useDeleteFileMutation,
+} = fileApi;

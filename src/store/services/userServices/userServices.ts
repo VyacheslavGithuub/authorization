@@ -11,7 +11,7 @@ import {
 export const userApi = createApi({
   reducerPath: "userApi",
   baseQuery,
-  tagTypes: ["auth"],
+  tagTypes: ["Auth"],
   endpoints: (build) => ({
     registerUser: build.mutation<IUserRegistrationResponse, IUserRegistration>({
       query: (data) => ({
@@ -19,6 +19,7 @@ export const userApi = createApi({
         method: "POST",
         body: data,
       }),
+      invalidatesTags: ["Auth"],
     }),
     loginUser: build.mutation<IUserLoginResponse, IUserLogin>({
       query: (data) => ({
@@ -26,6 +27,7 @@ export const userApi = createApi({
         method: "POST",
         body: data,
       }),
+      invalidatesTags: ["Auth"],
     }),
     exitUser: build.mutation<IExitUserResponse, any>({
       query: (data) => ({
@@ -33,6 +35,7 @@ export const userApi = createApi({
         method: "POST",
         body: data,
       }),
+      invalidatesTags: ["Auth"],
     }),
   }),
 });

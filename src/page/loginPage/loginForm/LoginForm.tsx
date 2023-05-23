@@ -5,7 +5,7 @@ import Loader from "../../../UI/loaderUI/Loader";
 import useLoginForm from "./useLoginForm";
 
 const LoginForm = () => {
-  const { LoginFormSC } = useLoginFormSCStyle();
+  const { LoginFormSC, LoginFormButtonSC } = useLoginFormSCStyle();
   const { isLoading, onSubmit } = useLoginForm();
 
   return (
@@ -16,7 +16,9 @@ const LoginForm = () => {
         <LoginFormSC onSubmit={onSubmit}>
           <InputUI label="Email" type="email" name="email" />
           <InputUI label="Password" type="password" name="password" />
-          <ButtonUI />
+          <LoginFormButtonSC>
+            <ButtonUI value="Отправить" />
+          </LoginFormButtonSC>
         </LoginFormSC>
       )}
     </>
